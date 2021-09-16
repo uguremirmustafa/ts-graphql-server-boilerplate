@@ -9,7 +9,7 @@ import { MovieResolver } from './resolvers/MovieResolver';
 (async () => {
   const app = express();
 
-  const options = await getConnectionOptions('development');
+  const options = await getConnectionOptions(process.env.NODE_ENV || 'development');
   await createConnection({ ...options, name: 'default' });
 
   const apolloServer = new ApolloServer({
